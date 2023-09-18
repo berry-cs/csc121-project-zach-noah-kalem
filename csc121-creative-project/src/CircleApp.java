@@ -1,6 +1,6 @@
 import processing.core.*;
 import processing.event.*;
-
+import ddf.minim.*;
 /**
  * Provides the scaffolding to launch a Processing application
  */
