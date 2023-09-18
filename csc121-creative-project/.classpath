@@ -5,14 +5,14 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="minim/" kind="src" path="src"/>
 	<classpathentry kind="lib" path="src/core.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="/Minim/library/jl1.0.1.jar"/>
-	<classpathentry kind="lib" path="/Minim/library/jsminim.jar"/>
-	<classpathentry kind="lib" path="/Minim/library/minim.jar"/>
-	<classpathentry kind="lib" path="/Minim/library/mp3spi1.9.5.jar"/>
-	<classpathentry kind="lib" path="/Minim/library/tritonus_aos.jar"/>
-	<classpathentry kind="lib" path="/Minim/library/tritonus_share.jar"/>
+	<classpathentry kind="lib" path="src/minim/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="src/minim/jsminim.jar"/>
+	<classpathentry kind="lib" path="src/minim/minim.jar"/>
+	<classpathentry kind="lib" path="src/minim/mp3spi1.9.5.jar"/>
+	<classpathentry kind="lib" path="src/minim/tritonus_aos.jar"/>
+	<classpathentry kind="lib" path="src/minim/tritonus_share.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
