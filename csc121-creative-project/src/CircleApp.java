@@ -19,6 +19,8 @@ import java.io.FileInputStream;
 public class CircleApp extends PApplet {
     CircleWorld w;
     Player player;
+    int state = 0;
+    
 
     public void settings() {
         this.size(800, 800);
@@ -26,26 +28,44 @@ public class CircleApp extends PApplet {
     
     public void setup() {
         w = new CircleWorld(200, 0); 
+        play();
     }
     	
     public void draw() {
-        w = w.update();
-        w.draw(this);
+    	this.background(0);
+    	
+    	//Switch case to allow easy control over menus
+    	switch(state) {
+	    	case 0: //default state
+		        background(0);
+		        textSize(32);
+		        textAlign(CENTER);
+		        text("Whack-a-deer", 400, 60);
+		        textSize(24);
+		        text("Press any key to start", 400, 130);      
+		        break;
+	    	case 1: //gameplay
+	    		w = w.update();
+	            w.draw(this); 
+		        break;
+		}
     }
     
     public void mousePressed(MouseEvent mev) {
-        w = w.mousePressed(mev);
-        play();
+    	w = w.mousePressed(mev);
+        
     }
     
+    //Currently only 2 game states, change later
     public void keyPressed(KeyEvent kev) {
+    	state = 1;
         // w = w.keyPressed(kev);
     }
     
-    
+    //Function for playing bg music
     public void play() {
         try {
-            FileInputStream fis = new FileInputStream("");
+            FileInputStream fis = new FileInputStream("src/assets/palace.mp3");
             BufferedInputStream bis = new BufferedInputStream(fis);
             player = new Player(bis);
         }
@@ -53,7 +73,6 @@ public class CircleApp extends PApplet {
             System.out.println(e);
         }
 
-        // run in new thread to play in background
         new Thread() {
             public void run() {
                 try { player.play(); }
