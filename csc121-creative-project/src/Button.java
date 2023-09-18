@@ -16,11 +16,14 @@ public class Button {
 		
 	}
 	
-	void render() {
+	public PApplet draw(PApplet c) {
+		c.rect(x,  y,  w, h);
+		c.text(text, x/2, y/2);
+        return c;
+    }
 	
-	}
 	void pressed() {
-		
+		//todo
 	}
 	
 	

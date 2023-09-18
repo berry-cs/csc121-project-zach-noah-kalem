@@ -19,11 +19,12 @@ import java.io.FileInputStream;
 public class CircleApp extends PApplet {
     CircleWorld w;
     Player player;
+    Page mainPage = new Page(9);
     int state = 0;
     
 
     public void settings() {
-        this.size(800, 800);
+        this.size(840, 840);
     }
     
     public void setup() {
@@ -40,13 +41,14 @@ public class CircleApp extends PApplet {
 		        background(0);
 		        textSize(32);
 		        textAlign(CENTER);
-		        text("Whack-a-deer", 400, 60);
+		        text("Whack-A-Mole", 400, 60);
 		        textSize(24);
 		        text("Press any key to start", 400, 130);      
 		        break;
 	    	case 1: //gameplay
-	    		w = w.update();
+	    		//w = w.update();
 	            w.draw(this); 
+	    		mainPage.draw(this);
 		        break;
 		}
     }
@@ -58,7 +60,10 @@ public class CircleApp extends PApplet {
     
     //Currently only 2 game states, change later
     public void keyPressed(KeyEvent kev) {
-    	state = 1;
+    	if (state == 0) {
+    		mainPage.makeSlots();
+    		state = 1;
+    	}
         // w = w.keyPressed(kev);
     }
     

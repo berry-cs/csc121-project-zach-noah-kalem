@@ -16,6 +16,7 @@ public class CircleWorld {
     public CircleWorld(double x, double y) {
         this.x = x;
         this.y = y; 
+        
     }
     
     /**
@@ -23,9 +24,9 @@ public class CircleWorld {
      */
     public PApplet draw(PApplet c) {
     	c.background(0);
-        c.text("Hello!", 20, 20);
-        c.fill(0, 0, 255);
-        c.circle((int)this.x, (int)this.y, 15);
+        //c.text("Hello!", 20, 20);
+        //c.fill(0, 0, 255);
+        //c.circle((int)this.x, (int)this.y, 15);
         return c;
     }
 
