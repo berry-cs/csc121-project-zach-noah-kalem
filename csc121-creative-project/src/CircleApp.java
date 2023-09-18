@@ -1,19 +1,16 @@
 import processing.core.*;
 import processing.event.*;
 
-//Minim doc: https://code.compartmental.net/minim/
-//import ddf.minim.*;
-
-//Sound: https://docs.oracle.com/javase/tutorial/sound/sampled-overview.html
-//https://docs.oracle.com/javase/8/docs/technotes/guides/sound/programmer_guide/contents.html
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+/* Sound docs:
+https://introcs.cs.princeton.edu/java/faq/mp3/MP3.java.html */
+import javazoom.jl.player.Player;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 
 /////TODO:
-/* 1. Create a page with Soundbutton
- * 2. Place the Soundbuttons into array or smth
- * 3. Save program state with JSON or other file method
+/* 
+ * 
+ * 
  */
 
 /**
@@ -21,18 +18,16 @@ import javax.sound.sampled.Clip;
  */
 public class CircleApp extends PApplet {
     CircleWorld w;
+    Player player;
 
-    Soundbutton testButton = new Soundbutton("assets/sonido.mp3", new ImageFile("",1,1));
-    
     public void settings() {
-        this.size(400, 400);
+        this.size(800, 800);
     }
     
     public void setup() {
-        w = new CircleWorld(200, 0);
-        //g.play();
+        w = new CircleWorld(200, 0); 
     }
-    
+    	
     public void draw() {
         w = w.update();
         w.draw(this);
@@ -40,11 +35,33 @@ public class CircleApp extends PApplet {
     
     public void mousePressed(MouseEvent mev) {
         w = w.mousePressed(mev);
+        play();
     }
     
     public void keyPressed(KeyEvent kev) {
         // w = w.keyPressed(kev);
     }
+    
+    
+    public void play() {
+        try {
+            FileInputStream fis = new FileInputStream("");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            player = new Player(bis);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+
+        // run in new thread to play in background
+        new Thread() {
+            public void run() {
+                try { player.play(); }
+                catch (Exception e) { System.out.println(e); }
+            }
+        }.start();
+    }
+    
 
     public static void main(String[] args) {
         PApplet.runSketch(new String[] { "CircleApp" }, new CircleApp());
