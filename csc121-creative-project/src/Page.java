@@ -2,11 +2,11 @@ import java.util.*;
 import processing.core.PApplet;
 
 /* A page containing slots */
-class Page {
+class Machine {
 	ArrayList<Slot> slots = new ArrayList<Slot>();
 	int slotAmount;
 	
-	public Page(int slotAmount) {
+	public Machine(int slotAmount) {
 		super();
 		this.slotAmount = slotAmount;
 	}
@@ -18,6 +18,7 @@ class Page {
         return c;
     }
 	
+	/*Generate slots for the machine*/
 	void makeSlots() {
 		int curX = 210; //for now let's hardcode this to the screen size. as well as the modulo.
 		int curY = 200;
@@ -30,6 +31,12 @@ class Page {
 			this.slots.add(newSlot);
 			curX += 210;
 		}
+		System.out.println(slots);
 		
+	}
+	
+	/*Choose a random slot from the machine to create a mole*/
+	Slot randomSlot() {
+		return slots.get((int)Math.random() * slotAmount);
 	}
 }
