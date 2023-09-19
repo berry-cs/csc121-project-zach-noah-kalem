@@ -19,7 +19,7 @@ import java.io.FileInputStream;
 public class CircleApp extends PApplet {
     CircleWorld w;
     Player player;
-    Machine mainPage = new Machine(9);
+    Machine mainPage;
     int state = 0;
     
 
@@ -28,7 +28,8 @@ public class CircleApp extends PApplet {
     }
     
     public void setup() {
-        w = new CircleWorld(200, 0); 
+        //w = new CircleWorld(200, 0);
+        mainPage = new Machine(9);
         play();
     }
     	
@@ -47,14 +48,14 @@ public class CircleApp extends PApplet {
 		        break;
 	    	case 1: //gameplay
 	    		//w = w.update();
-	            w.draw(this); 
+	            //w.draw(this); 
 	    		mainPage.draw(this);
 		        break;
 		}
     }
     
     public void mousePressed(MouseEvent mev) {
-    	w = w.mousePressed(mev);
+    	//w = w.mousePressed(mev);
         
     }
     

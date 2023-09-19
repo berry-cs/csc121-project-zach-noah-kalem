@@ -18,6 +18,7 @@ class Machine {
         return c;
     }
 	
+	/*Generate slots for the machine*/
 	void makeSlots() {
 		int curX = 210; //for now let's hardcode this to the screen size. as well as the modulo.
 		int curY = 200;
@@ -30,6 +31,12 @@ class Machine {
 			this.slots.add(newSlot);
 			curX += 210;
 		}
+		System.out.println(slots);
 		
+	}
+	
+	/*Choose a random slot from the machine to create a mole*/
+	Slot randomSlot() {
+		return slots.get((int)Math.random() * slotAmount);
 	}
 }
