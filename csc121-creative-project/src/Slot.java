@@ -1,4 +1,7 @@
 /* A slot */
+import java.util.Timer;
+import java.util.TimerTask;
+
 import processing.core.PApplet;
 
 public class Slot {
@@ -24,5 +27,17 @@ public class Slot {
     void fillSlot(){
     	color = 255;
     	Mole mole = new Mole (this, false, 100);
+    	update();
+    }
+    
+    public Slot update() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+        	public void run() {
+        		color = 150;
+        		active = false;
+        	}
+        }, 1000);
+        return this;
     }
 }

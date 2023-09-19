@@ -11,7 +11,15 @@ public class Mole {
 		this.score = score;
 	}
 	
+	// add to player's score if hit
+	void addScore() {
+	 // to-do	
+	}
 	
+	// delete the mole not sure if needed yet
+	void delete() {
+	// to-do
+	}
 	
 
 }

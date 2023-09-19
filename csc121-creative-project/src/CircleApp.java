@@ -1,4 +1,4 @@
-mport processing.core.*;
+import processing.core.*;
 import processing.event.*;
 
 /* Sound docs:
@@ -49,6 +49,12 @@ public class CircleApp extends PApplet {
 	    		//w = w.update();
 	            //w.draw(this); 
 	    		mainPage.draw(this);
+	    		/* 
+	    		 * 
+	    		 * The "update" function is called when the state changes
+	    		 * Each slot also has its own update func
+	    		 * 
+	    		 */
 		        break;
 		}
     }
@@ -63,6 +69,7 @@ public class CircleApp extends PApplet {
     	if (state == 0) {
     		mainPage.makeSlots();
     		mainPage.randomSlot();
+    		mainPage.gameRandom();
     		state = 1;
     	}
         // w = w.keyPressed(kev);

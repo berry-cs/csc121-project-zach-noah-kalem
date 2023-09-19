@@ -1,3 +1,4 @@
+import java.time.*;
 import java.util.*;
 import processing.core.PApplet;
 
@@ -5,6 +6,7 @@ import processing.core.PApplet;
 class Machine {
 	ArrayList<Slot> slots = new ArrayList<Slot>();
 	int slotAmount;
+	Timer timer = new Timer();
 	
 	public Machine(int slotAmount) {
 		super();
@@ -18,6 +20,13 @@ class Machine {
         return c;
     }
 	
+	/**
+     * Update function doesn't do anything right now
+     */
+    public Machine update() {
+        return this;
+    }
+	
 	/*Generate slots for the machine*/
 	void makeSlots() {
 		int curX = 210; //for now let's hardcode this to the screen size. as well as the modulo.
@@ -27,18 +36,23 @@ class Machine {
 				curX = 210;
 				curY += 200;
 			}
-			Slot newSlot = new Slot(curX, curY, 150, false);
+			Slot newSlot = new Slot(curX, curY, 150, false, 150);
 			this.slots.add(newSlot);
 			curX += 210;
 		}
-		System.out.println(slots);
-		
 	}
 	
+	/* Gamemode where a random slot is chosen every 2 seconds */
+	void gameRandom() {
+        timer.scheduleAtFixedRate(new TimerTask() {
+        	public void run() {
+        		randomSlot().fillSlot();
+        	}
+        }, 2000, 2000);
+	}
 	/*Choose a random slot from the machine to create a mole*/
 	Slot randomSlot() {
-		int chosen = (int)(Math.random() * slotAmount-1);
-		System.out.println(chosen);
+		int chosen = (int)(Math.random() * slotAmount);
 		return slots.get(chosen);
 	}
 	
