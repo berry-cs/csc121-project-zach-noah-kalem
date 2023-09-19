@@ -24,12 +24,14 @@ public class Slot {
         return c;
     }
     
+    /*Fill the slot with a mole*/
     void fillSlot(){
     	color = 255;
     	Mole mole = new Mole (this, false, 100);
     	update();
     }
     
+    /*Return the slot to normal after X time*/
     public Slot update() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {

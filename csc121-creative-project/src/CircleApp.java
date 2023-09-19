@@ -7,12 +7,6 @@ import javazoom.jl.player.Player;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 
-/////TODO:
-/* 
- * 
- * 
- */
-
 /**
  * Provides the scaffolding to launch a Processing application
  */
@@ -34,8 +28,7 @@ public class CircleApp extends PApplet {
     	
     public void draw() {
     	this.background(0);
-    	
-    	//Switch case to allow easy control over menus
+
     	switch(state) {
 	    	case 0: //default state
 		        background(0);
@@ -46,8 +39,6 @@ public class CircleApp extends PApplet {
 		        text("Press any key to start", 400, 130);      
 		        break;
 	    	case 1: //gameplay
-	    		//w = w.update();
-	            //w.draw(this); 
 	    		mainPage.draw(this);
 	    		/* 
 	    		 * 
@@ -61,7 +52,6 @@ public class CircleApp extends PApplet {
     
     public void mousePressed(MouseEvent mev) {
     	//w = w.mousePressed(mev);
-        
     }
     
     //Currently only 2 game states, change later
