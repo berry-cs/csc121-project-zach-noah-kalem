@@ -17,7 +17,6 @@ import java.io.FileInputStream;
  * Provides the scaffolding to launch a Processing application
  */
 public class CircleApp extends PApplet {
-    CircleWorld w;
     Player player;
     Machine mainPage;
     int state = 0;
@@ -63,6 +62,7 @@ public class CircleApp extends PApplet {
     public void keyPressed(KeyEvent kev) {
     	if (state == 0) {
     		mainPage.makeSlots();
+    		mainPage.randomSlot();
     		state = 1;
     	}
         // w = w.keyPressed(kev);
