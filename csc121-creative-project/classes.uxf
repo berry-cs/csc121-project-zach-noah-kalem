@@ -4,26 +4,97 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>410</x>
-      <y>250</y>
+      <x>80</x>
+      <y>190</y>
       <w>210</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>_object: Class_
+    <panel_attributes>Page
 --
-id: Long="36548"
-[waiting for message]</panel_attributes>
+int slotAmount</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
+      <x>80</x>
       <y>270</y>
       <w>210</w>
-      <h>70</h>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>Mole</panel_attributes>
+    <panel_attributes>Mole
+--
+int x
+int y
+int w
+int h
+String text</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>60</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>circleApp
+--
+Player
+Page
+int state
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>120</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;50.0;80.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>390</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Slot
+--
+int x
+int y
+int size
+boolean active</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>210</y>
+      <w>70</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;190.0;50.0;190.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>330</x>
+      <y>270</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>0..*
+bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
