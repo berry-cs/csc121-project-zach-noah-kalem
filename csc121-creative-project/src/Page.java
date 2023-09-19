@@ -37,6 +37,10 @@ class Machine {
 	
 	/*Choose a random slot from the machine to create a mole*/
 	Slot randomSlot() {
-		return slots.get((int)Math.random() * slotAmount);
+		int chosen = (int)(Math.random() * slotAmount-1);
+		System.out.println(chosen);
+		return slots.get(chosen);
 	}
+	
+	
 }
