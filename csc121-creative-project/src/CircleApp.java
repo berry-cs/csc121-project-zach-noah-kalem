@@ -1,4 +1,4 @@
-import processing.core.*;
+mport processing.core.*;
 import processing.event.*;
 
 /* Sound docs:

@@ -5,9 +5,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>80</x>
-      <y>190</y>
+      <y>250</y>
       <w>210</w>
-      <h>70</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Page
 --
@@ -18,51 +18,22 @@ int slotAmount</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>80</x>
-      <y>270</y>
+      <y>310</y>
       <w>210</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>Mole
 --
-int x
-int y
-int w
-int h
-String text</panel_attributes>
+Slot pos
+Boolean scored
+int score</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>80</x>
-      <y>60</y>
-      <w>210</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>circleApp
---
-Player
-Page
-int state
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>280</x>
-      <y>120</y>
-      <w>70</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;50.0;80.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>80</x>
-      <y>390</y>
+      <y>430</y>
       <w>210</w>
       <h>120</h>
     </coordinates>
@@ -75,26 +46,79 @@ boolean active</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>280</x>
-      <y>210</y>
-      <w>70</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;190.0;50.0;190.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>330</x>
-      <y>270</y>
+      <x>320</x>
+      <y>390</y>
       <w>120</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>0..*
 bg=blue</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>60</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Button
+--
+int x
+int y
+int w
+int h
+String text</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>180</y>
+      <w>210</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>circleApp
+--
+Page
+int state</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>270</y>
+      <w>60</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;40.0;170.0;40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>330</y>
+      <w>60</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;110.0;10.0;110.0;10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>200</y>
+      <w>60</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;60.0;10.0;60.0;10.0;10.0;40.0;10.0</additional_attributes>
   </element>
 </diagram>
