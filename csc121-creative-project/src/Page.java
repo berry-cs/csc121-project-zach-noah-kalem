@@ -2,11 +2,11 @@ import java.util.*;
 import processing.core.PApplet;
 
 /* A page containing slots */
-class Page {
+class Machine {
 	ArrayList<Slot> slots = new ArrayList<Slot>();
 	int slotAmount;
 	
-	public Page(int slotAmount) {
+	public Machine(int slotAmount) {
 		super();
 		this.slotAmount = slotAmount;
 	}

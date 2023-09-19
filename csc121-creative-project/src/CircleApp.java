@@ -19,7 +19,7 @@ import java.io.FileInputStream;
 public class CircleApp extends PApplet {
     CircleWorld w;
     Player player;
-    Page mainPage = new Page(9);
+    Machine mainPage = new Machine(9);
     int state = 0;
     
 
