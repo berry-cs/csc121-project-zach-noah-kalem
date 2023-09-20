@@ -1,11 +1,13 @@
 import java.util.*;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 
 /* A page containing slots */
-class Machine {
+class Machine implements IStage {
 	ArrayList<Slot> slots = new ArrayList<Slot>();
 	int slotAmount;
 	Timer timer = new Timer();
+	int countDown = 500;
 	
 	public Machine(int slotAmount) {
 		super();
@@ -13,6 +15,7 @@ class Machine {
 	}
 	
 	public PApplet draw(PApplet c) {
+        c.background(0);
 		for (Slot x : slots) {
 			x.draw(c);
 		}
@@ -22,8 +25,13 @@ class Machine {
 	/**
      * Update function doesn't do anything right now
      */
-    public Machine update() {
-        return this;
+    public IStage update() {
+        this.countDown--;
+        if (countDown <= 0) { 
+            return new WelcomeStage(); 
+        } else {
+            return this;
+        }
     }
 	
 	/*Generate slots for the machine*/
@@ -54,6 +62,15 @@ class Machine {
 		int chosen = (int)(Math.random() * slotAmount);
 		return slots.get(chosen);
 	}
+	
+	@Override
+    public IStage keyPressed(KeyEvent kev) {
+	    if (Character.toLowerCase(kev.getKey()) == 'q') {
+	        return new WelcomeStage();
+	    } else {
+	        return this;
+	    }
+    }
 	
 	
 }

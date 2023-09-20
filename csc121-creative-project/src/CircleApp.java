@@ -12,42 +12,20 @@ import java.io.FileInputStream;
  */
 public class CircleApp extends PApplet {
     Player player;
-    Machine mainPage;
-    int state = 0;
-    
+    IStage currentStage;
 
     public void settings() {
         this.size(840, 840);
     }
     
     public void setup() {
-        //w = new CircleWorld(200, 0);
-        mainPage = new Machine(9);
+        currentStage = new WelcomeStage();   // new Machine(9);
         play();
     }
     	
     public void draw() {
-    	this.background(0);
-
-    	switch(state) {
-	    	case 0: //default state
-		        background(0);
-		        textSize(32);
-		        textAlign(CENTER);
-		        text("Whack-A-Mole", 400, 60);
-		        textSize(24);
-		        text("Press any key to start", 400, 130);      
-		        break;
-	    	case 1: //gameplay
-	    		mainPage.draw(this);
-	    		/* 
-	    		 * 
-	    		 * The "update" function is called when the state changes
-	    		 * Each slot also has its own update func
-	    		 * 
-	    		 */
-		        break;
-		}
+        currentStage = currentStage.update();
+    	currentStage.draw(this);
     }
     
     public void mousePressed(MouseEvent mev) {
@@ -56,13 +34,7 @@ public class CircleApp extends PApplet {
     
     //Currently only 2 game states, change later
     public void keyPressed(KeyEvent kev) {
-    	if (state == 0) {
-    		mainPage.makeSlots();
-    		mainPage.randomSlot();
-    		mainPage.gameRandom();
-    		state = 1;
-    	}
-        // w = w.keyPressed(kev);
+    	currentStage = currentStage.keyPressed(kev);
     }
     
     //Function for playing bg music
