@@ -1,7 +1,7 @@
 import processing.core.*;
 import processing.event.*;
 
-/* Sound docs:
+/* Sound documentation:
 https://introcs.cs.princeton.edu/java/faq/mp3/MP3.java.html */
 import javazoom.jl.player.Player;
 import java.io.BufferedInputStream;
