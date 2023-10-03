@@ -12,12 +12,19 @@ class Machine implements IStage {
 	public Machine(int slotAmount) {
 		super();
 		this.slotAmount = slotAmount;
+		this.points = 0;
 	}
 	
 	public PApplet draw(PApplet c) {
         c.background(0);
-		for (Slot x : slots) {
-			x.draw(c);
+        drawHUD(c);
+        
+		for (Slot slot : slots) {
+			slot.draw(c);
+			if (slot.clicked(c)) {
+				System.out.println("clicked");
+				addPoints(slot.getPoints());
+			}
 		}
         return c;
     }
@@ -32,6 +39,16 @@ class Machine implements IStage {
         } else {
             return this;
         }
+    }
+    
+    public void drawHUD(PApplet c) {
+    	c.fill(255);
+        c.textAlign(c.LEFT);
+        c.textSize(32);
+        c.text("Score: "+points, 0, 840);
+        c.textAlign(c.RIGHT);
+        c.textSize(46);
+        c.text(this.countDown/100, 840, 30);
     }
 	
 	/*Generate slots for the machine*/
@@ -73,7 +90,7 @@ class Machine implements IStage {
     }
 	
 	/**Add points to the player's score**/
-	void addPoints(int num) {
+	public void addPoints(int num) {
 		;
 	}
 	

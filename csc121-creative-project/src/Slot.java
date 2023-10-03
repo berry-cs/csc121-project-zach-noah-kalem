@@ -34,12 +34,16 @@ public class Slot {
     }
     
     /*Event: Player clicked the slot*/
-    void clicked() {
-    	if (this.active) {
+    public boolean clicked(PApplet c) {
+    	if (c.mousePressed) {
     		color = 255;
-    		
-    		this.active = false;
+    		return true;
     	}
+    	return false;
+    }
+    
+    public int getPoints() {
+    	return this.points;
     }
     
     /*Return the slot to normal after X time*/
