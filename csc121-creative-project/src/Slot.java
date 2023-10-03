@@ -20,7 +20,7 @@ public class Slot {
     }
     public PApplet draw(PApplet c) {
         c.fill(color);
-        c.circle(x, y, size);
+        c.square(x-size/2, y-size/2, size);
         return c;
     }
     
