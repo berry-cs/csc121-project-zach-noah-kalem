@@ -35,7 +35,7 @@ public class Slot {
     
     /*Event: Player clicked the slot*/
     public boolean clicked(PApplet c) {
-    	if (c.mousePressed) {
+    	if (c.mouseX > x - size/2 && c.mouseY < y - size/2 && c.mouseX < x - size/2 && c.mouseY > y - size/2 ) {
     		color = 255;
     		return true;
     	}
