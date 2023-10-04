@@ -7,7 +7,7 @@ class Machine implements IStage {
 	ArrayList<Slot> slots = new ArrayList<Slot>();
 	Timer timer = new Timer();
 	private int slotAmount, points;
-	int countDown = 500;
+	int countDown = 3000;
 	
 	public Machine(int slotAmount) {
 		super();
