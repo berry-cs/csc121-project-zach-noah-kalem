@@ -91,7 +91,7 @@ class Machine implements IStage {
 	
 	/**Add points to the player's score**/
 	public void addPoints(int num) {
-		;
+		this.points += num;
 	}
 	
 	
