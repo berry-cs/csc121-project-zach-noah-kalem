@@ -44,6 +44,10 @@ public class Slot {
     }
     
     public int getPoints() {
+    	return this.points;
+    }
+    
+    public int reducePoints() {
     	return -this.points;
     }
     
