@@ -44,7 +44,7 @@ public class Slot {
     }
     
     public int getPoints() {
-    	return this.points;
+    	return -this.points;
     }
     
     /*Return the slot to normal after X time*/
