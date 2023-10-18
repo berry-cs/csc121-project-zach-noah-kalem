@@ -1,6 +1,7 @@
 import java.util.*;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
+import processing.event.MouseEvent;
 
 /* A machine containing slots */
 class Machine implements IStage {
@@ -25,6 +26,7 @@ class Machine implements IStage {
 				System.out.println("clicked");
 				addPoints(slot.getPoints());
 			}
+			else addPoints(slot.reducePoints());
 		}
         return c;
     }
@@ -93,6 +95,12 @@ class Machine implements IStage {
 	public void addPoints(int num) {
 		this.points += num;
 	}
-	
+	/**
+     * Produces an updated world with the position of the
+     * drop updated to the location of the mouse press.
+     */
+    public CircleWorld mousePressed(MouseEvent mev) {
+        return new CircleWorld(mev.getX(), mev.getY());
+    }
 	
 }
