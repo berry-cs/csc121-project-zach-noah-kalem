@@ -33,22 +33,36 @@ public class Slot {
     	update();
     }
     
+    /* Get this slot's edges position */
+    public int[] getPosition() {
+    	int left = x - size/2;
+    	int right = x + size/2;
+    	int top = y - size/2;
+    	int bottom = y + size/2;
+    	int[] arr = {left, right, top, bottom};
+    	return arr;
+    }
+    
     /*Event: Player clicked the slot*/
-    public boolean clicked(PApplet c) {
-    	if (this.active && c.mouseX > x - size/2 && c.mouseY < y + size/2 && c.mouseX < x + size/2 && c.mouseY > y - size/2  && c.mousePressed) {
-    		color = 150;
-    		this.active = false;
-    		return true;
+    public int clicked(PApplet c) {
+    	if (
+    		c.mouseX > x - size/2 && c.mouseY < y + size/2 &&
+    		c.mouseX < x + size/2 && c.mouseY > y - size/2) {
+    		
+    		if (this.active) {
+    			color = 150;
+    			this.active = false;
+    			return 1;
+    		}
+    		else{
+    			return 2;
+    		}
     	}
-    	return false;
+    	return 0;
     }
     
     public int getPoints() {
     	return this.points;
-    }
-    
-    public int reducePoints() {
-    	return -this.points;
     }
     
     /*Return the slot to normal after X time*/
