@@ -13,9 +13,11 @@ import java.io.FileInputStream;
 public class Mole extends PApplet {
     Player player;
     IStage currentStage;
+    private static int width = 840;
+    private static int height = 840;
 
     public void settings() {
-        this.size(840, 840);
+        this.size(width, height);
     }
     
     public void setup() {
@@ -56,6 +58,15 @@ public class Mole extends PApplet {
         }.start();
     }
     
+    
+    public int getWidth() {
+    	return width;
+    }
+    
+    public int getHeight() {
+    	return height;
+    }
+
 
     public static void main(String[] args) {
         PApplet.runSketch(new String[] { "Mole" }, new Mole());
