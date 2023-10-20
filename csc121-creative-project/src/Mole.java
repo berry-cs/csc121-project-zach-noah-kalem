@@ -11,8 +11,8 @@ import java.io.FileInputStream;
  * Provides the scaffolding to launch a Processing application
  */
 public class Mole extends PApplet {
-    Player player;
-    IStage currentStage;
+   private Player player;
+  private  IStage currentStage;
     private static int width = 840;
     private static int height = 840;
 

@@ -5,13 +5,13 @@ import processing.event.MouseEvent;
 
 /* A machine containing slots */
 class Machine implements IStage {
-	ArrayList<Slot> slots = new ArrayList<Slot>();
-	Timer timer = new Timer();
+	private ArrayList<Slot> slots = new ArrayList<Slot>();
+	private Timer timer = new Timer();
 	private int slotAmount, points;
 	private boolean debounce;
-	int countDown = 3000;
-	boolean incorrect= false;
-	String message = "You're Trash";
+	private int countDown = 3000;
+	private boolean incorrect= false;
+	private String message = "You're Trash";
 
 	public Machine(int slotAmount) {
 		super();
@@ -71,10 +71,10 @@ class Machine implements IStage {
 		c.fill(255);
 		c.textAlign(c.LEFT);
 		c.textSize(32);
-		c.text("Score: "+points, 0, 840);
+		c.text("Score: "+points, 0, Mole.getHeight());
 		c.textAlign(c.RIGHT);
 		c.textSize(46);
-		c.text(this.countDown/100, 840, 30);
+		c.text(this.countDown/100, Mole.getWidth(), Mole.getHeight() / 28 );
 		c.textAlign(c.CENTER);
 		if (incorrect)
 

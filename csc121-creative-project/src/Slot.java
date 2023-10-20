@@ -10,7 +10,9 @@ public class Slot {
     private boolean active = false; //Determine if slot is in used/queued
     private int color;
     private int points;
-  
+  private int grey = 150;
+  private int white = 255;
+  private int updateTimer = 1000;
    
   
     
@@ -31,7 +33,7 @@ public class Slot {
     
     /*Fill the slot with a mole*/
     void fillSlot(){
-    	color = 255;
+    	color = white;
     	this.active = true;
     	update();
     }
@@ -53,7 +55,7 @@ public class Slot {
     		c.mouseX < x + size/2 && c.mouseY > y - size/2) {
     		
     		if (this.active) {
-    			color = 150;
+    			color = grey;
     			this.active = false;
     			return 1;
     		}
@@ -73,10 +75,10 @@ public class Slot {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
         	public void run() {
-        		color = 150;
+        		color = grey;
         		active = false;
         	}
-        }, 1000);
+        }, updateTimer);
         return this;
     
     }

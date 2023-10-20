@@ -2,9 +2,9 @@ import processing.core.PApplet;
 
 /* A clickable menu button */
 public class Button {
-	int x, y;
-	int w, h;
-	String text;
+private	int x, y;
+private	int w, h;
+private	String text;
 	
 	
 	public Button(int x, int y, int w, int h, String text) {
