@@ -10,6 +10,9 @@ public class Slot {
     private boolean active = false; //Determine if slot is in used/queued
     private int color;
     private int points;
+  
+   
+  
     
     public Slot(int x, int y, int size, boolean active, int color, int points) {
         super();
@@ -75,5 +78,8 @@ public class Slot {
         	}
         }, 1000);
         return this;
+    
     }
+
 }
+

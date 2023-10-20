@@ -10,6 +10,8 @@ class Machine implements IStage {
 	private int slotAmount, points;
 	private boolean debounce;
 	int countDown = 3000;
+	boolean incorrect= false;
+	String message = "You're Trash";
 
 	public Machine(int slotAmount) {
 		super();
@@ -20,13 +22,13 @@ class Machine implements IStage {
 
 	public PApplet draw(PApplet c) {
 		c.background(0);
-		drawHUD(c);
+
 
 		//Draw slots on the screen.
 		for (Slot slot : slots) {
 			slot.draw(c);
 		}
-
+		drawHUD(c);
 		//Handle mouse
 		if (c.mousePressed) {
 			if (!debounce) {
@@ -38,6 +40,8 @@ class Machine implements IStage {
 					else if (slot.clicked(c) == 2) {
 						addPoints(-slot.getPoints());
 						debounce = true;
+						incorrect = true;
+						removeMessage();
 					}
 				}
 			}
@@ -71,6 +75,11 @@ class Machine implements IStage {
 		c.textAlign(c.RIGHT);
 		c.textSize(46);
 		c.text(this.countDown/100, 840, 30);
+		c.textAlign(c.CENTER);
+		if (incorrect)
+
+			c.text(message, Mole.getWidth()/2 , Mole.getHeight()/ (84 / 10));
+
 	}
 
 	/*Generate slots for the machine*/
@@ -123,4 +132,14 @@ class Machine implements IStage {
 		return new CircleWorld(mev.getX(), mev.getY());
 	}
 
+	public void removeMessage() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+
+				incorrect = false;
+			}
+		}, 100);
+
+	}
 }
