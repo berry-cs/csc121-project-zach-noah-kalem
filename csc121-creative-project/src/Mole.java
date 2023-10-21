@@ -12,7 +12,6 @@ public class Mole extends PApplet {
 	private IStage currentStage;
 	private static final int width = 1000;
 	private static final int height = 1000;
-	
 	private static Minim minim;
 	private static AudioPlayer song;
 	private static AudioSample hit, miss;

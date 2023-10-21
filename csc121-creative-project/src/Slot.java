@@ -42,16 +42,6 @@ public class Slot {
 	public boolean getActive() {
 		return this.active;
 	}
-	
-	/* Get this slot's edges position */
-	public int[] getPosition() {
-		int left = x - size/2;
-		int right = x + size/2;
-		int top = y - size/2;
-		int bottom = y + size/2;
-		int[] arr = {left, right, top, bottom};
-		return arr;
-	}
 
 	/**Event: Player clicked the slot
 	 * 

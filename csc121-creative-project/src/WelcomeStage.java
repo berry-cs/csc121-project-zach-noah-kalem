@@ -10,7 +10,7 @@ public class WelcomeStage implements IStage {
 	private String difficultyText = "";
 	private String difficultyMessage = "";
 	private ArrayList<Button> buttons;
-	Button difficultyUp, difficultyDown;
+	private Button difficultyUp, difficultyDown;
 
 	public void setup() {
 		buttons = new ArrayList<Button>(); 

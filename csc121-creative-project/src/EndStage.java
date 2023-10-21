@@ -2,8 +2,8 @@ import processing.core.PApplet;
 import processing.event.KeyEvent;
 
 public class EndStage implements IStage {
-	int points;
-	String difficultyText;
+	private int points;
+	private String difficultyText;
 	
 	public EndStage(int points, int difficulty) {
 		this.points = points;
