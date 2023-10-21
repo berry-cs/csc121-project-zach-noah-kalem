@@ -104,9 +104,7 @@ class Machine implements IStage {
 		int curX = Mole.getWidth()/4;
 		int curY = Mole.getHeight()/(42/10);
 		for (int i = 1; i <= slotAmount; i++) {
-			System.out.print(i);
 			if (i % 3 == 1 && i != 1) {
-				System.out.print("Pudding");
 				curX = Mole.getWidth()/4;
 				curY += Mole.getHeight()/(42/10);
 			}
