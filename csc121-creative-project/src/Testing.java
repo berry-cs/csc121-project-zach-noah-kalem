@@ -19,9 +19,9 @@ class Testing {
     
     @Test
     void testAddPoints() {
-    	Machine m1 = new Machine(1);
-    	Machine m2 = new Machine(0);
-    	Machine m3 = new Machine(2);
+    	Machine m1 = new Machine(2);
+    	Machine m2 = new Machine(3);
+    	Machine m3 = new Machine(4);
     	
     	assertEquals(m1.points + 2, m1.addPoints(2));
     	assertEquals(m2.points + 15, m2.addPoints(15));
@@ -30,13 +30,13 @@ class Testing {
     
     @Test
     void testRandomSlot() {
-    	Machine m1 = new Machine(1);
-    	Machine m2 = new Machine(2);
-    	Machine m3 = new Machine(3);
+    	Machine m1 = new Machine(5);
+    	Machine m2 = new Machine(6);
+    	Machine m3 = new Machine(7);
     	
-    	assertEquals((Math.random() * 1), m1.randomSlot());
-    	assertEquals((Math.random() * 2), m2.randomSlot());
-    	assertEquals((Math.random() * 3), m3.randomSlot());
+    	assertEquals((Math.random() * 5), m1.randomSlot());
+    	assertEquals((Math.random() * 6), m2.randomSlot());
+    	assertEquals((Math.random() * 7), m3.randomSlot());
     }
     
 }

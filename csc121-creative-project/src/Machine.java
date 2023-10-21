@@ -135,8 +135,9 @@ class Machine implements IStage {
 	}
 
 	/**Add points to the player's score**/
-	public void addPoints(int num) {
+	public int addPoints(int num) {
 		this.points += num;
+		return this.points;
 	}
 	/**
 	 * Produces an updated world with the position of the
