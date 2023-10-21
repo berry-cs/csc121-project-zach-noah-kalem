@@ -16,8 +16,6 @@ public class Slot {
 	private int white = 255;
 	private int updateTimer = 1000;
 
-
-
 	public Slot(int x, int y, int size, boolean active, int color, int points) {
 		super();
 		this.x = x;

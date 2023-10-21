@@ -25,14 +25,11 @@ class Machine implements IStage {
 	public PApplet draw(PApplet c) {
 		c.background(0);
 		
-		
-
-
 		//Draw slots on the screen.
 		for (Slot slot : slots) {
 			slot.draw(c);
 		}
-		drawHUD(c);
+		
 		//Handle mouse
 		if (c.mousePressed) {
 			if (!debounce) {
@@ -43,18 +40,18 @@ class Machine implements IStage {
 			debounce = false;
 		}
 
-
+		drawHUD(c);
 		return c;
 	}
 
 
 	/**
-	 * Update function doesn't do anything right now
+	 * Check if the Machine has ended
 	 */
 	public IStage update() {
 		this.countDown--;
 		if (countDown <= 0) { 
-			return new WelcomeStage(); 
+			return new EndStage(); 
 		} else {
 			return this;
 		}
