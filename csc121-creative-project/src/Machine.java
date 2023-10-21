@@ -9,7 +9,7 @@ import ddf.minim.Minim;
 class Machine implements IStage {
 	private ArrayList<Slot> slots = new ArrayList<Slot>();
 	private Timer timer = new Timer();
-	private int slotAmount, points;
+	public int slotAmount, points;
 	private boolean debounce;
 	private int countDown = 3000;
 	private boolean incorrect= false;

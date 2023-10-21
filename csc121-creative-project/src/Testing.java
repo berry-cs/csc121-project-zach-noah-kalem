@@ -1,16 +1,42 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-import processing.core.PApplet;
-
 import org.junit.jupiter.api.Test;
 
 class Testing {
 	//BUTTON DRAW TESTS
     @Test
-    void testDraw() {
-        Button button1 = new Button(50, 50, 100, 30, "Message");
-        PApplet b1 = new PApplet();
+    void testButton() {
+        Button button1 = new Button(50, 50, 100, 30, 255, "Message");
+        Button button2 = new Button(20, 20, 500, 30, 155, "Hey Man");
+        Button button3 = new Button(60, 60, 60, 60, 60, "Sixty");
 
-        assertEquals(b1.rect(50, 50, 100, 30), b1.text("Message", 25, 25), button1.draw(b1));
+        
+
+        assertEquals(button1, new Button(50, 50, 100, 30, 255, "Message"));
+        assertEquals(button2, new Button(20, 20, 500, 30, 155, "Hey Man"));
+        assertEquals(button3, new Button(60, 60, 60, 60, 60, "Sixty"));
+
     }
+    
+    @Test
+    void testAddPoints() {
+    	Machine m1 = new Machine(1);
+    	Machine m2 = new Machine(0);
+    	Machine m3 = new Machine(2);
+    	
+    	assertEquals(m1.points + 2, m1.addPoints(2));
+    	assertEquals(m2.points + 15, m2.addPoints(15));
+    	assertEquals(m3.points + 360, m3.addPoints(360));
+    }
+    
+    @Test
+    void testRandomSlot() {
+    	Machine m1 = new Machine(1);
+    	Machine m2 = new Machine(2);
+    	Machine m3 = new Machine(3);
+    	
+    	assertEquals((Math.random() * 1), m1.randomSlot());
+    	assertEquals((Math.random() * 2), m2.randomSlot());
+    	assertEquals((Math.random() * 3), m3.randomSlot());
+    }
+    
 }
