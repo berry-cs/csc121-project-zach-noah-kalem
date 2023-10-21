@@ -12,8 +12,6 @@ public class Slot {
 	private boolean jiggling = false;
 	private int color;
 	private int points;
-	private int grey = 150;
-	private int white = 255;
 	private int hitWindow;
 
 	public Slot(int x, int y, int size, int hitWindow, int color, int points) {
@@ -33,7 +31,7 @@ public class Slot {
 
 	/*Fill the slot with a mole*/
 	void fillSlot(){
-		color = white;
+		color = Mole.white;
 		this.active = true;
 		update();
 	}
@@ -57,7 +55,7 @@ public class Slot {
 			if (this.active) {
 				jiggle(c, false);
 				Mole.playSound(Mole.getHit());
-				color = grey;
+				color = Mole.grey;
 				this.active = false;
 				return 1;
 			}
@@ -80,7 +78,7 @@ public class Slot {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
-				color = grey;
+				color = Mole.grey;
 				active = false;
 				timer.cancel();
 			}

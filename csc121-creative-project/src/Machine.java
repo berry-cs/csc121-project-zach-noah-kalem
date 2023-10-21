@@ -70,14 +70,14 @@ class Machine implements IStage {
 		c.fill(255);
 		c.textAlign(c.LEFT);
 		c.textSize(32);
-		c.text("Score: "+points, 0, Mole.getHeight());
+		c.text("Score: "+points, 0, Mole.height);
 		c.textAlign(c.RIGHT);
 		c.textSize(46);
-		c.text(this.countDown/100, Mole.getWidth(), Mole.getHeight() / 28 );
+		c.text(this.countDown/100, Mole.width, Mole.height / 28 );
 		c.textAlign(c.CENTER);
 		if (incorrect)
 
-			c.text(message, Mole.getWidth()/2 , Mole.getHeight()/ (84 / 10));
+			c.text(message, Mole.width/2 , Mole.height/ (84 / 10));
 
 	}
 
@@ -106,16 +106,16 @@ class Machine implements IStage {
 		 * Slots = 9
 		 * Size = 150
 		 */
-		int curX = Mole.getWidth()/4;
-		int curY = Mole.getHeight()/(42/10);
+		int curX = Mole.width/4;
+		int curY = Mole.height/(42/10);
 		for (int i = 1; i <= slotAmount; i++) {
 			if (i % 3 == 1 && i != 1) {
-				curX = Mole.getWidth()/4;
-				curY += Mole.getHeight()/(42/10);
+				curX = Mole.width/4;
+				curY += Mole.height/(42/10);
 			}
-			Slot newSlot = new Slot(curX, curY, Mole.getWidth()/(56/10), hitWindow, 150, eachScore);
+			Slot newSlot = new Slot(curX, curY, Mole.width/(56/10), hitWindow, Mole.grey, eachScore);
 			this.slots.add(newSlot);
-			curX += Mole.getWidth()/4;
+			curX += Mole.width/4;
 		}
 	}
 

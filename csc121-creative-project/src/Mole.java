@@ -9,9 +9,11 @@ import processing.event.*;
  * Provides the scaffolding to launch a Processing application
  */
 public class Mole extends PApplet {
+	public static final int width = 1000;
+	public static final int height = 1000;
+	public static final int grey = 100;
+	public static final int white = 255;
 	private IStage currentStage;
-	private static final int width = 1000;
-	private static final int height = 1000;
 	private static Minim minim;
 	private static AudioPlayer song;
 	private static AudioSample hit, miss;
@@ -62,15 +64,6 @@ public class Mole extends PApplet {
 	public static AudioSample getMiss() {
 		return miss;
 	}
-
-	public static int getWidth() {
-		return width;
-	}
-
-	public static int getHeight() {
-		return height;
-	}
-
 
 	public static void main(String[] args) {
 		PApplet.runSketch(new String[] { "Mole" }, new Mole());

@@ -14,8 +14,8 @@ public class WelcomeStage implements IStage {
 
 	public void setup() {
 		buttons = new ArrayList<Button>(); 
-		difficultyUp = new Button(Mole.getWidth()/2 + Mole.getWidth()/10, Mole.getHeight()/2 - Mole.getHeight()/20, Mole.getWidth()/10, Mole.getHeight()/10, 255, ">");
-		difficultyDown = new Button(Mole.getWidth()/2 - (Mole.getWidth()/10)*2, Mole.getHeight()/2- Mole.getHeight()/20, Mole.getWidth()/10, Mole.getHeight()/10, 255, "<");
+		difficultyUp = new Button(Mole.width/2 + Mole.width/10, Mole.height/2 - Mole.height/20, Mole.width/10, Mole.height/10, 255, ">");
+		difficultyDown = new Button(Mole.width/2 - (Mole.width/10)*2, Mole.height/2- Mole.height/20, Mole.width/10, Mole.height/10, 255, "<");
 	}
 
 	@Override
@@ -57,9 +57,9 @@ public class WelcomeStage implements IStage {
 	public void drawHUD(PApplet c) {
 		c.textSize(64);
 		c.textAlign(c.CENTER);
-		c.text("Whack-A-Mole", Mole.getWidth()/2, Mole.getHeight()/(84/10));
+		c.text("Whack-A-Mole", Mole.width/2, Mole.height/(84/10));
 		c.textSize(24);
-		c.text("Press space bar to start", Mole.getWidth()/2, Mole.getHeight()/2 + (Mole.getHeight()/10)*2); 
+		c.text("Press space bar to start", Mole.width/2, Mole.height/2 + (Mole.height/10)*2); 
 		
 		if (getDifficulty() == 1) {
 			difficultyText = "Easy";
@@ -79,9 +79,9 @@ public class WelcomeStage implements IStage {
 		}
 		
 		c.textSize(42);
-		c.text(difficultyText, Mole.getWidth()/2, Mole.getHeight()/2);
+		c.text(difficultyText, Mole.width/2, Mole.height/2);
 		c.textSize(32);
-		c.text(difficultyMessage, Mole.getWidth()/2, Mole.getHeight()/2 + Mole.getHeight()/10);
+		c.text(difficultyMessage, Mole.width/2, Mole.height/2 + Mole.height/10);
 		
 		
 	}
