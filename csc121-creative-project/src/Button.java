@@ -2,26 +2,8 @@ import java.util.Objects;
 
 import processing.core.PApplet;
 
-/* A clickable menu button */
+/** A clickable menu button **/
 public class Button {
-	@Override
-	public int hashCode() {
-		return Objects.hash(color, h, text, w, x, y);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Button other = (Button) obj;
-		return color == other.color && h == other.h && Objects.equals(text, other.text) && w == other.w && x == other.x
-				&& y == other.y;
-	}
-
 	private	int x, y;
 	private	int w, h;
 	private	String text;
@@ -49,8 +31,26 @@ public class Button {
 
 	/** Button was clicked **/
 	public boolean clicked(PApplet c) {
-		return (c.mouseX > x - w/2 && c.mouseY < y + h/2 &&
-				c.mouseX < x + w/2 && c.mouseY > y - h/2);
+		return (c.mouseX > x && c.mouseY < y + h &&
+				c.mouseX < x + w  && c.mouseY > y);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(color, h, text, w, x, y);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Button other = (Button) obj;
+		return color == other.color && h == other.h && Objects.equals(text, other.text) && w == other.w && x == other.x
+				&& y == other.y;
 	}
 
 

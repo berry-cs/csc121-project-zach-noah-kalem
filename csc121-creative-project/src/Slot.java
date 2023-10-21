@@ -14,14 +14,14 @@ public class Slot {
 	private int points;
 	private int grey = 150;
 	private int white = 255;
-	private int updateTimer = 1000;
+	private int hitWindow;
 
-	public Slot(int x, int y, int size, boolean active, int color, int points) {
+	public Slot(int x, int y, int size, int hitWindow, int color, int points) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.size = size;
-		this.active = active;
+		this.hitWindow = hitWindow;
 		this.color = color;
 		this.points = points;
 	}
@@ -37,7 +37,12 @@ public class Slot {
 		this.active = true;
 		update();
 	}
-
+	
+	/** Return if slot is active **/
+	public boolean getActive() {
+		return this.active;
+	}
+	
 	/* Get this slot's edges position */
 	public int[] getPosition() {
 		int left = x - size/2;
@@ -48,13 +53,13 @@ public class Slot {
 		return arr;
 	}
 
-	/*Event: Player clicked the slot
+	/**Event: Player clicked the slot
 	 * 
 	 * 0: Default state
 	 * 1: Award points (correct hit)
 	 * 2. Remove points (incorrect hit)
 	 * 
-	 * */
+	 * **/
 	public int clicked(PApplet c) {
 		if (c.mouseX > x - size/2 && c.mouseY < y + size/2 &&
 				c.mouseX < x + size/2 && c.mouseY > y - size/2) {
@@ -75,6 +80,7 @@ public class Slot {
 		return 0;
 	}
 
+	/** Get the points this slot gives**/
 	public int getPoints() {
 		return this.points;
 	}
@@ -88,7 +94,7 @@ public class Slot {
 				active = false;
 				timer.cancel();
 			}
-		}, updateTimer);
+		}, hitWindow);
 		return this;
 
 	}

@@ -9,17 +9,23 @@ import ddf.minim.Minim;
 class Machine implements IStage {
 	private ArrayList<Slot> slots = new ArrayList<Slot>();
 	private Timer timer = new Timer();
-	public int slotAmount, points;
+	private int slotAmount, points;
 	private boolean debounce;
 	private int countDown = 3000;
 	private boolean incorrect= false;
 	private String message = "You're Trash";
+	private int difficulty;
+	private int hitWindow;
+	private int eachScore;
 
-	public Machine(int slotAmount) {
+	public Machine(int slotAmount, int difficulty) {
 		super();
 		this.slotAmount = slotAmount;
+		this.difficulty = difficulty;
 		this.points = 0;
 		this.debounce = false;
+		this.hitWindow = 2000/difficulty;
+		this.eachScore = 150*difficulty;
 	}
 
 	public PApplet draw(PApplet c) {
@@ -51,12 +57,15 @@ class Machine implements IStage {
 	public IStage update() {
 		this.countDown--;
 		if (countDown <= 0) { 
-			return new EndStage(); 
+			return new EndStage(getPoints(), difficulty); 
 		} else {
 			return this;
 		}
 	}
-
+	
+	/**
+	 * Draw the hud (score, timer, etc.)
+	 */
 	public void drawHUD(PApplet c) {
 		c.fill(255);
 		c.textAlign(c.LEFT);
@@ -88,15 +97,14 @@ class Machine implements IStage {
 		}
 	}
 
-	/*Generate slots for the machine*/
+	/** Generate slots for the machine **/
 	void makeSlots() {
 		/*
+		 * Based on these values:
 		 * Width = 840
 		 * Height = 840
 		 * Slots = 9
 		 * Size = 150
-		 * 
-		 * 
 		 */
 		int curX = Mole.getWidth()/4;
 		int curY = Mole.getHeight()/(42/10);
@@ -105,48 +113,47 @@ class Machine implements IStage {
 				curX = Mole.getWidth()/4;
 				curY += Mole.getHeight()/(42/10);
 			}
-			Slot newSlot = new Slot(curX, curY, Mole.getWidth()/(56/10), false, 150, 300);
+			Slot newSlot = new Slot(curX, curY, Mole.getWidth()/(56/10), hitWindow, 150, eachScore);
 			this.slots.add(newSlot);
 			curX += Mole.getWidth()/4;
 		}
 	}
 
-	/* Game-mode where a random slot is chosen every 2 seconds */
+	/** Game-mode where a random slot is chosen every X seconds **/
 	void gameRandom() {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
 				randomSlot().fillSlot();
 			}
-		}, 2000, 2000);
+		}, hitWindow, hitWindow);
 	}
-	/*Choose a random slot from the machine to activate*/
-	Slot randomSlot() {
+	
+	/** Choose a random slot from the machine to activate **/
+	public Slot randomSlot() {
 		int chosen = (int)(Math.random() * slotAmount);
+		if (slots.get(chosen).getActive()) { //prevent pick if already active
+			randomSlot();
+		}
 		return slots.get(chosen);
 	}
-
-	@Override
-	public IStage keyPressed(KeyEvent kev) {
-		if (Character.toLowerCase(kev.getKey()) == 'q') {
-			return new WelcomeStage();
-		} else {
-			return this;
-		}
+	
+	/** Return points **/
+	public int getPoints() {
+		return this.points;
+	}
+	
+	/** Return a slot **/
+	public Slot getSlot(int slotNum) {
+		return this.slots.get(slotNum);
 	}
 
 	/**Add points to the player's score**/
 	public int addPoints(int num) {
 		this.points += num;
-		return this.points;
+		return getPoints();
 	}
-	/**
-	 * Produces an updated world with the position of the
-	 * drop updated to the location of the mouse press.
-	 */
-	public CircleWorld mousePressed(MouseEvent mev) {
-		return new CircleWorld(mev.getX(), mev.getY());
-	}
-
+	
+	/** Show the miss message when clicked on wrong square **/
 	public void displayMessage() {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -156,5 +163,19 @@ class Machine implements IStage {
 			}
 		}, 100);
 
+	}
+	
+	@Override
+	/** Keypress func 
+	 * 
+	 * Q to quit game
+	 * 
+	 * **/
+	public IStage keyPressed(KeyEvent kev) {
+		if (Character.toLowerCase(kev.getKey()) == 'q') {
+			return new WelcomeStage();
+		} else {
+			return this;
+		}
 	}
 }
