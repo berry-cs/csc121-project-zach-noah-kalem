@@ -6,11 +6,11 @@ public class WelcomeStage implements IStage {
     @Override
     public PApplet draw(PApplet c) {
         c.background(0);
-        c.textSize(32);
+        c.textSize(64);
         c.textAlign(c.CENTER);
-        c.text("Whack-A-Mole", 400, 60);
+        c.text("Whack-A-Mole", Mole.getWidth()/2, Mole.getHeight()/(84/10));
         c.textSize(24);
-        c.text("Press space bar to start", 400, 130);      
+        c.text("Press space bar to start", Mole.getWidth()/2, Mole.getHeight()/(60/10));      
         return c;
     }
 

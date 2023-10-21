@@ -2,6 +2,8 @@ import java.util.*;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
+import ddf.minim.AudioSample;
+import ddf.minim.Minim;
 
 /* A machine containing slots */
 class Machine implements IStage {
@@ -22,6 +24,8 @@ class Machine implements IStage {
 
 	public PApplet draw(PApplet c) {
 		c.background(0);
+		
+		
 
 
 		//Draw slots on the screen.
@@ -32,18 +36,7 @@ class Machine implements IStage {
 		//Handle mouse
 		if (c.mousePressed) {
 			if (!debounce) {
-				for (Slot slot : slots) {
-					if (slot.clicked(c) == 1) {
-						addPoints(slot.getPoints());
-						debounce = true;
-					}
-					else if (slot.clicked(c) == 2) {
-						addPoints(-slot.getPoints());
-						debounce = true;
-						incorrect = true;
-						removeMessage();
-					}
-				}
+				slotHitDetection(c);
 			}
 		}
 		else {
@@ -82,18 +75,44 @@ class Machine implements IStage {
 
 	}
 
+	/**Handle hit detection for slots.**/
+	public void slotHitDetection(PApplet c) {
+		for (Slot slot : slots) {
+			if (slot.clicked(c) == 1) {
+				addPoints(slot.getPoints());
+				debounce = true;
+			}
+			else if (slot.clicked(c) == 2) {
+				addPoints(-slot.getPoints());
+				debounce = true;
+				incorrect = true;
+				displayMessage();
+			}
+		}
+	}
+
 	/*Generate slots for the machine*/
 	void makeSlots() {
-		int curX = 210; //for now let's hard-code this to the screen size. as well as the modulo.
-		int curY = 200;
+		/*
+		 * Width = 840
+		 * Height = 840
+		 * Slots = 9
+		 * Size = 150
+		 * 
+		 * 
+		 */
+		int curX = Mole.getWidth()/4;
+		int curY = Mole.getHeight()/(42/10);
 		for (int i = 1; i <= slotAmount; i++) {
+			System.out.print(i);
 			if (i % 3 == 1 && i != 1) {
-				curX = 210;
-				curY += 200;
+				System.out.print("Pudding");
+				curX = Mole.getWidth()/4;
+				curY += Mole.getHeight()/(42/10);
 			}
-			Slot newSlot = new Slot(curX, curY, 150, false, 150, 300);
+			Slot newSlot = new Slot(curX, curY, Mole.getWidth()/(56/10), false, 150, 300);
 			this.slots.add(newSlot);
-			curX += 210;
+			curX += Mole.getWidth()/4;
 		}
 	}
 
@@ -132,12 +151,12 @@ class Machine implements IStage {
 		return new CircleWorld(mev.getX(), mev.getY());
 	}
 
-	public void removeMessage() {
+	public void displayMessage() {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
-
 				incorrect = false;
+				timer.cancel();
 			}
 		}, 100);
 
