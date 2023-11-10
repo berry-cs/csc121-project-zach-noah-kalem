@@ -9,8 +9,8 @@ import processing.event.*;
  * Provides the scaffolding to launch a Processing application
  */
 public class Mole extends PApplet {
-	public static final int width = 1000;
-	public static final int height = 1000;
+	public static final int width = 800;
+	public static final int height = 800;
 	public static final int grey = 100;
 	public static final int white = 255;
 	private IStage currentStage;
