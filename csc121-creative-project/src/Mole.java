@@ -5,9 +5,10 @@ import ddf.minim.Minim;
 import processing.core.*;
 import processing.event.*;
 
-/**
+/*
  * Provides the scaffolding to launch a Processing application
  */
+
 public class Mole extends PApplet {
 	public static final int width = 800;
 	public static final int height = 800;
