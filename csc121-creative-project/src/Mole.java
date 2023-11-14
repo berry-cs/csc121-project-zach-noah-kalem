@@ -79,20 +79,24 @@ public class Mole extends PApplet {
 
 	public static void main(String[] args) {
 
-        try {
-            scores = new File("src/assets/scores.txt");
-            Scanner sc = new Scanner(scores);
+		try {
+			scores = new File("src/assets/scores.txt");
+			Scanner sc = new Scanner(scores);
 
-            while (sc.hasNext()) {
-                System.out.println(sc.next());
-            }
-            sc.close();
-        }
-        catch (IOException e) {
-            System.out.println("Error loading scores, resetting to default...");
-            //PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
-        }
-        PApplet.runSketch(new String[] { "Mole" }, new Mole());
-    }
+			for (int i = 0; i < scoresList.length; i++) {
+
+				{
+					scoresList[i] = Integer.valueOf(sc.next());
+					playerList[i] = sc.next(); 
+	} 
+				}
+			sc.close();
+		}
+		catch (IOException e) {
+			System.out.println("Error loading scores, resetting to default...");
+			//PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
+		}
+		PApplet.runSketch(new String[] { "Mole" }, new Mole());
+	}
 
 }
