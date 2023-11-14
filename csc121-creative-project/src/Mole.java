@@ -37,7 +37,7 @@ public class Mole extends PApplet {
 		song = minim.loadFile("src/assets/palace.mp3");
 		hit = minim.loadSample("src/assets/hit.mp3");
 		miss = minim.loadSample("src/assets/miss.mp3");
-		scores = new File("src/assets/scores.txt");
+		
 		currentStage = new WelcomeStage();   // new Machine(9);
 	}
 
@@ -76,18 +76,22 @@ public class Mole extends PApplet {
 	}
 
 	public static void main(String[] args) {
-		/*
+		
 		try {
+			scores = new File("src/assets/scores.txt");
 			Scanner sc = new Scanner(scores);
-			PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
-		}
-		catch (FileNotFoundException e) {
-			System.out.println("Error loading scores, resetting to default...");
-			//while(sc.hasNextLine()) {
-				
+
+			while (sc.hasNext()) {
+				System.out.println(sc.next());
 			}
+			
+			sc.close();
+			
 		}
-	*/
+		catch (IOException e) {
+			System.out.println("Error loading scores, resetting to default...");
+			//PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
+		}
 		PApplet.runSketch(new String[] { "Mole" }, new Mole());
 	}
 }
