@@ -34,6 +34,12 @@ public class EndStage implements IStage {
         c.text("Score: "+points, Mole.width/2, Mole.height/2); 
         c.text("Difficulty: "+difficultyText, Mole.width/2, Mole.height/2 + Mole.height/10);
         
+        //LEADER BOARD
+        for(int i = 1; i <= Mole.scoresList.length; i++){
+        	c.text(Mole.scoresList[i - 1], Mole.width/2 - 30, Mole.height/6 + 40 * i);
+        	c.text(Mole.playerList[i - 1], Mole.width/2 + 30, Mole.height/6 + 40 * i);
+        }
+        
         return c;
     }
     

@@ -26,8 +26,8 @@ public class Mole extends PApplet {
 	private static AudioSample hit, miss;
 	public static File scores;
 	
-	public static int[] scoresList = new int[4];
-	public static String[] playerList = new String[4];
+	public static int[] scoresList = new int[5];
+	public static String[] playerList = new String[5];
 	
 
 	public void settings() {
