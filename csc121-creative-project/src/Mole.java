@@ -5,18 +5,24 @@ import ddf.minim.Minim;
 import processing.core.*;
 import processing.event.*;
 
+import java.util.*;
+import java.io.*;
+
+
 /**
  * Provides the scaffolding to launch a Processing application
  */
 public class Mole extends PApplet {
-	public static final int width = 1000;
-	public static final int height = 1000;
+	public static final int width = 800;
+	public static final int height = 800;
 	public static final int grey = 100;
 	public static final int white = 255;
 	private IStage currentStage;
 	private static Minim minim;
 	private static AudioPlayer song;
 	private static AudioSample hit, miss;
+	public static File scores;
+	
 	
 
 	public void settings() {
@@ -28,6 +34,7 @@ public class Mole extends PApplet {
 		song = minim.loadFile("src/assets/palace.mp3");
 		hit = minim.loadSample("src/assets/hit.mp3");
 		miss = minim.loadSample("src/assets/miss.mp3");
+		scores = new File("src/assets/scores.txt");
 		currentStage = new WelcomeStage();   // new Machine(9);
 	}
 
@@ -66,6 +73,18 @@ public class Mole extends PApplet {
 	}
 
 	public static void main(String[] args) {
+		/*
+		try {
+			Scanner sc = new Scanner(scores);
+			PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Error loading scores, resetting to default...");
+			//while(sc.hasNextLine()) {
+				
+			}
+		}
+	*/
 		PApplet.runSketch(new String[] { "Mole" }, new Mole());
 	}
 }
