@@ -26,6 +26,8 @@ public class Mole extends PApplet {
 	private static AudioSample hit, miss;
 	public static File scores;
 	
+	public static int[] scoresList = new int[4];
+	public static String[] playerList = new String[4];
 	
 
 	public void settings() {
@@ -76,18 +78,21 @@ public class Mole extends PApplet {
 	}
 
 	public static void main(String[] args) {
-		/*
-		try {
-			Scanner sc = new Scanner(scores);
-			PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
-		}
-		catch (FileNotFoundException e) {
-			System.out.println("Error loading scores, resetting to default...");
-			//while(sc.hasNextLine()) {
-				
-			}
-		}
-	*/
-		PApplet.runSketch(new String[] { "Mole" }, new Mole());
-	}
+
+        try {
+            scores = new File("src/assets/scores.txt");
+            Scanner sc = new Scanner(scores);
+
+            while (sc.hasNext()) {
+                System.out.println(sc.next());
+            }
+            sc.close();
+        }
+        catch (IOException e) {
+            System.out.println("Error loading scores, resetting to default...");
+            //PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
+        }
+        PApplet.runSketch(new String[] { "Mole" }, new Mole());
+    }
+
 }
