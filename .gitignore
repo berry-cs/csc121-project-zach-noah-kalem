@@ -18,6 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
+csc121-project-zach-noah-kalem\csc121-creative-project\src\assets\scores.txt
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
