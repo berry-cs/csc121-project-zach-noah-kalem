@@ -1,0 +1,27 @@
+Easy
+0 AAA
+1 AAA
+2 AAA
+3 AAA
+4 AAA
+
+Medium
+0 AAA
+1 AAA
+2 AAA
+3 AAA
+4 AAA
+
+Hard
+0 AAA
+1 AAA
+2 AAA
+3 AAA
+4 AAA
+
+Insane
+0 AAA
+1 AAA
+2 AAA
+3 AAA
+4 AAA
