@@ -25,9 +25,15 @@ public class Mole extends PApplet {
 	private static AudioPlayer song;
 	private static AudioSample hit, miss;
 	public static File scores;
+	public static final int maxScores = 5;
 	
-	public static int[] scoresList = new int[5];
-	public static String[] playerList = new String[5];
+	//public static int[] scoresList = new int[5];
+	//public static String[] playerList = new String[5];
+	
+	//list of scores
+	public static ArrayList<Integer> scoresList = new ArrayList<Integer>(maxScores);
+	//list of names
+	//public static ArrayList<String> playerList = new ArrayList<String>(5);
 	
 
 	public void settings() {
@@ -83,11 +89,11 @@ public class Mole extends PApplet {
 			scores = new File("src/assets/scores.txt");
 			Scanner sc = new Scanner(scores);
 
-			for (int i = 0; i < scoresList.length; i++) {
+			for (int i = 0; i < maxScores; i++) {
 
 				{
-					scoresList[i] = Integer.valueOf(sc.next());
-					playerList[i] = sc.next(); 
+					//System.out.println(scoresList.size());
+					scoresList.add(Integer.valueOf(sc.next()));
 	} 
 				}
 			sc.close();
@@ -95,6 +101,9 @@ public class Mole extends PApplet {
 		catch (IOException e) {
 			System.out.println("Error loading scores, resetting to default...");
 			//PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
+			for(int i = 0; i < maxScores; i++) {
+				scoresList.add(0);
+			}
 		}
 		PApplet.runSketch(new String[] { "Mole" }, new Mole());
 	}

@@ -1,3 +1,7 @@
+import java.util.*;
+import java.io.*;
+import java.lang.reflect.Array;
+
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 
@@ -19,6 +23,23 @@ public class EndStage implements IStage {
 	public EndStage(int points, int difficulty) {
 		this.points = points;
 		this.difficultyText = getDifficulty(difficulty);
+		for(int i = 0; i < Mole.maxScores; i++) {
+			if(this.points >= Mole.scoresList.get(i)) {		
+				Mole.scoresList.remove(Mole.scoresList.size() - 1);
+				Mole.scoresList.add(i, this.points);
+				break;
+			}
+		}
+		try {
+			PrintWriter pw = new PrintWriter(new File("src/assets/scores.txt"));
+			for(int i = 0; i < Mole.maxScores; i++) {
+				pw.println(Mole.scoresList.get(i));
+			}
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
     @Override
@@ -35,11 +56,10 @@ public class EndStage implements IStage {
         c.text("Difficulty: "+difficultyText, Mole.width/2, Mole.height/2 + Mole.height/10);
         
         //LEADER BOARD
-        for(int i = 1; i <= Mole.scoresList.length; i++){
-        	c.text(Mole.scoresList[i - 1], Mole.width/2 - 30, Mole.height/6 + 40 * i);
-        	c.text(Mole.playerList[i - 1], Mole.width/2 + 30, Mole.height/6 + 40 * i);
-        }
-        
+        for(int i = 1; i <= Mole.scoresList.size(); i++){
+        	c.text(Mole.scoresList.get(i - 1), Mole.width/2 - 60, Mole.height/6 + 40 * i);
+        	c.text("Score " + i, Mole.width/2 + 60, Mole.height/6 + 40 * i);
+        } 
         return c;
     }
     

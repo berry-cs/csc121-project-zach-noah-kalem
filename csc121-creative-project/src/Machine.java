@@ -11,7 +11,7 @@ class Machine implements IStage {
 	private Timer timer = new Timer();
 	private int slotAmount, points;
 	private boolean debounce;
-	private int countDown = 3000;
+	private int countDown = 500;
 	private boolean incorrect= false;
 	private String message = "You're Trash";
 	private int difficulty;
